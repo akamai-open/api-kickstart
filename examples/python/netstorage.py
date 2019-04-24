@@ -32,7 +32,7 @@ requests_log.propagate = True
 
 # Authentication pieces
 authdata = "5, 0.0.0.0, 0.0.0.0, %d, %d, kirsten" % (t, t)
-signature = base64.b64encode(hmac.new("NUq2a5N8C14uWCs8k3aq7l003J40ymIS7s45v5Jn9LHhl5QRIz", authdata + "/384473/index.html\n" + "x-akamai-acs-action:version=1&action=upload\n", hashlib.sha256).digest())
+signature = base64.b64encode(hmac.new("<api_key>", authdata + "/384473/index.html\n" + "x-akamai-acs-action:version=1&action=upload\n", hashlib.sha256).digest())
 
 payload = "This is a test"
 
@@ -41,7 +41,7 @@ s.headers.update({"X-Akamai-ACS-Action":'version=1&action=upload'})
 s.headers.update({"X-Akamai-ACS-Auth-Data":authdata})
 s.headers.update({"X-Akamai-ACS-Auth-Sign":signature})
  
-req = requests.Request('PUT', "http://kirsten-nsu.akamaihd.net/384473/index.html", data=payload)
+req = requests.Request('PUT', <URL>, data=payload)
 prepped = s.prepare_request(req)
 
 resp = s.send(prepped)
