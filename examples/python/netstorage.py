@@ -32,7 +32,7 @@ requests_log.propagate = True
 
 # Authentication pieces
 authdata = "5, 0.0.0.0, 0.0.0.0, %d, %d, kirsten" % (t, t)
-signature = base64.b64encode(hmac.new("<api_key>", authdata + "/384473/index.html\n" + "x-akamai-acs-action:version=1&action=upload\n", hashlib.sha256).digest())
+signature = base64.b64encode(hmac.new(<api_key>, authdata + <file_path> + "x-akamai-acs-action:version=1&action=upload\n", hashlib.sha256).digest())
 
 payload = "This is a test"
 
